@@ -5,8 +5,7 @@ import headerLogo from "../images/header__logo.svg";
 export default function Header(props) {
   const navigate = useNavigate();
 
-  function signOut() {
-    // localStorage.removeItem("jwt");
+  function toggleLink() {
     navigate(props.link);
   }
 
@@ -20,14 +19,18 @@ export default function Header(props) {
       {props.loggedIn && (
         <div className="header__nav">
           <p className="header__email">{props.email}</p>
-          <Link to={props.link} onClick={signOut} className="header__link">
+          <Link
+            to={props.link}
+            onClick={props.onSignOut}
+            className="header__link"
+          >
             {props.linkName}
           </Link>
         </div>
       )}
       {!props.loggedIn && (
         <div className="header__nav">
-          <Link to={props.link} onClick={signOut} className="header__link">
+          <Link to={props.link} onClick={toggleLink} className="header__link">
             {props.linkName}
           </Link>
         </div>

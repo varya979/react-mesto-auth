@@ -1,8 +1,7 @@
 import React from "react";
 import popupCloseButton from "../images/popup__button-close.svg";
-
-import success from "../images/success.svg";
-import fail from "../images/fail.svg";
+import successImg from "../images/success.svg";
+import failImg from "../images/fail.svg";
 
 export default function InfoTooltip(props) {
   return (
@@ -24,16 +23,30 @@ export default function InfoTooltip(props) {
           />
         </button>
         <div className="popup__infoTooltip-container">
-          <figure className="popup__figure">
-            <img
-              className="popup__infoTooltip-image"
-              src={success}
-              alt={props.text}
-              // src={`${props.card.link}`}
-              // alt={props.card.name}
-            />
-            <h3 className="popup__infoTooltip-text">{props.text}</h3>
-          </figure>
+          {!props.successRegistation && (
+            <figure className="popup__figure">
+              <img
+                className="popup__infoTooltip-image"
+                src={failImg}
+                alt="Рисунок крестика"
+              />
+              <h3 className="popup__infoTooltip-text">
+                Что-то пошло не так! Попробуйте ещё раз.
+              </h3>
+            </figure>
+          )}
+          {props.successRegistation && (
+            <figure className="popup__figure">
+              <img
+                className="popup__infoTooltip-image"
+                src={successImg}
+                alt="Рисунок галочки"
+              />
+              <h3 className="popup__infoTooltip-text">
+                Вы успешно зарегистрировались!
+              </h3>
+            </figure>
+          )}
         </div>
       </div>
     </div>

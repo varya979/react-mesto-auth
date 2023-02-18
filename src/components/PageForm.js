@@ -1,12 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Fieldset from "./Fieldset";
 
 export default function PageForm(props) {
   return (
     <div className="page-form">
       <h2 className="page-form__title">{props.title}</h2>
-      <form className="page-form__form">
+      <form className="page-form__form" onSubmit={props.handleSubmit}>
         <Fieldset
           id="email"
           name="email"
@@ -14,8 +13,8 @@ export default function PageForm(props) {
           typeValue="email"
           minLengthValue="2"
           maxLengthValue="40"
-          // value={name}
-          // onChange={handleChangeName}
+          value={props.email}
+          onChange={props.handleChange}
         />
         <Fieldset
           id="password"
@@ -24,8 +23,8 @@ export default function PageForm(props) {
           typeValue="password"
           minLengthValue="2"
           maxLengthValue="40"
-          // value={name}
-          // onChange={handleChangeName}
+          value={props.password}
+          onChange={props.handleChange}
         />
         <button className="page-form__button-save opacity" type="submit">
           {props.submitButtonTitle}
